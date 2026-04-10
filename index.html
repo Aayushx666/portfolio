@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayush Nautiyal — Cybersecurity Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080C10;
+  --surface: #0D1117;
+  --surface2: #121820;
+  --surface3: #1A2332;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --accent: #00D4FF;
+  --accent2: #0088CC;
+  --accent-dim: rgba(0,212,255,0.08);
+  --accent-dim2: rgba(0,212,255,0.15);
+  --green: #00E5A0;
+  --green-dim: rgba(0,229,160,0.08);
+  --amber: #FFB547;
+  --amber-dim: rgba(255,181,71,0.08);
+  --text: #E8EEF4;
+  --text2: #8B99A8;
+  --text3: #4E5D6C;
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
+  --r: 10px;
+  --r-lg: 16px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* GRID NOISE TEXTURE */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* GLOW ORB */
+body::after {
+  content: '';
+  position: fixed;
+  top: -200px;
+  right: -200px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(0,212,255,0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(8,12,16,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+.nav-logo span { color: var(--text3); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text2);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+.nav-cta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 7px 16px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(0,212,255,0.3);
+  border-radius: 6px;
+  color: var(--accent);
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+.nav-cta:hover { background: var(--accent-dim2); border-color: var(--accent); }
+
+/* WRAPPER */
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* SECTION */
+section { padding: 5rem 0; }
+section + section { border-top: 1px solid var(--border); }
+
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.section-eyebrow::after {
+  content: '';
+  flex: 1;
+  max-width: 60px;
+  height: 1px;
+  background: var(--border2);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2.5rem;
+  line-height: 1.2;
+}
+
+/* ===== HERO ===== */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-inner {
+  padding: 4rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-left { position: relative; }
+
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-dim);
+  border: 1px solid rgba(0,229,160,0.2);
+  border-radius: 99px;
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--green);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.75rem;
+  animation: fadeUp 0.6s ease both;
+}
+
+.status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+
+.hero-h1 .accent-word {
+  color: var(--accent);
+  position: relative;
+}
+
+.hero-h1 .accent-word::after {
+  content: '';
+  position: absolute;
+  bottom: 2px; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  opacity: 0.4;
+}
+
+.hero-tagline {
+  font-size: 16px;
+  color: var(--text2);
+  line-height: 1.75;
+  max-width: 480px;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  border-radius: var(--r);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  letter-spacing: 0.02em;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+}
+.btn-primary:hover { background: #33DDFF; transform: translateY(-1px); }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border2);
+  color: var(--text2);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+.hero-right {
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.terminal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  font-family: var(--font-mono);
+}
+
+.terminal-bar {
+  background: var(--surface2);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.t-dot { width: 10px; height: 10px; border-radius: 50%; }
+.t-red { background: #FF5F57; }
+.t-yellow { background: #FEBC2E; }
+.t-green { background: #28C840; }
+
+.t-title {
+  font-size: 11px;
+  color: var(--text3);
+  margin-left: 4px;
+  letter-spacing: 0.03em;
+}
+
+.terminal-body {
+  padding: 1.25rem 1.5rem;
+  font-size: 12.5px;
+  line-height: 2;
+}
+
+.t-line { display: block; }
+.t-prompt { color: var(--accent); }
+.t-cmd { color: var(--text); }
+.t-out { color: var(--text2); }
+.t-green-t { color: var(--green); }
+.t-amber-t { color: var(--amber); }
+.t-comment { color: var(--text3); }
+.t-cursor {
+  display: inline-block;
+  width: 8px; height: 14px;
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.hero-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border2);
+  color: var(--text3);
+  letter-spacing: 0.04em;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== ABOUT ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-text p {
+  color: var(--text2);
+  margin-bottom: 1rem;
+  font-size: 15px;
+}
+
+.about-text p strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.about-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 1.75rem;
+}
+
+.about-card-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.about-card h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.about-card p {
+  font-size: 13.5px;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+.about-cards { display: flex; flex-direction: column; gap: 12px; }
+
+.stat-chips {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.stat-chip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 0.7rem 1.1rem;
+  text-align: center;
+}
+
+.stat-chip-num {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+}
+
+.stat-chip-lbl {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+  display: block;
+}
+
+/* ===== SKILLS ===== */
+.skills-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.skill-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 1.25rem 1.4rem;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.skill-card:hover { border-color: var(--border2); background: var(--surface2); }
+.skill-card:hover::before { opacity: 1; }
+
+.skill-card.blue::before { background: var(--accent); }
+.skill-card.green::before { background: var(--green); }
+.skill-card.amber::before { background: var(--amber); }
+
+.skill-card-icon {
+  font-size: 20px;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.skill-card-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-pill {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: var(--surface3);
+  color: var(--text2);
+  border: 1px solid var(--border);
+  letter-spacing: 0.02em;
+}
+
+/* ===== PROJECTS ===== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.proj-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 1.75rem;
+  transition: border-color 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.proj-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-3px);
+}
+
+.proj-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text3);
+  letter-spacing: 0.05em;
+}
+
+.proj-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.proj-title span {
+  color: var(--accent);
+}
+
+.proj-desc {
+  font-size: 13.5px;
+  color: var(--text2);
+  line-height: 1.75;
+  flex: 1;
+}
+
+.proj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.proj-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid rgba(0,212,255,0.15);
+  letter-spacing: 0.03em;
+}
+
+.proj-tag.green {
+  background: var(--green-dim);
+  color: var(--green);
+  border-color: rgba(0,229,160,0.15);
+}
+
+.proj-tag.amber {
+  background: var(--amber-dim);
+  color: var(--amber);
+  border-color: rgba(255,181,71,0.15);
+}
+
+/* ===== EXPERIENCE ===== */
+.exp-timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.exp-timeline::before {
+  content: '';
+  position: absolute;
+  left: 4px; top: 8px; bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), rgba(0,212,255,0.1));
+}
+
+.exp-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.exp-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.exp-dot {
+  position: absolute;
+  left: -2rem;
+  top: 6px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 10px rgba(0,212,255,0.5);
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.4rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.exp-role {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.exp-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid rgba(0,212,255,0.2);
+  white-space: nowrap;
+}
+
+.exp-company {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text3);
+  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+}
+
+.exp-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.exp-bullets li {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.7;
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.exp-bullets li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.exp-bullets li strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ===== CONTACT ===== */
+#contact { padding-bottom: 6rem; }
+
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-intro p {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.contact-link:hover {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.contact-link-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+  border: 1px solid var(--border2);
+  background: var(--surface2);
+  font-family: var(--font-mono);
+  color: var(--text2);
+  font-weight: 500;
+}
+
+.contact-link-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.contact-link-val {
+  font-size: 13.5px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.contact-availability {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.availability-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.availability-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse 2s ease infinite;
+}
+
+.availability-header span {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--green);
+  letter-spacing: 0.03em;
+}
+
+.availability-text {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+.availability-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.availability-chip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  background: var(--green-dim);
+  color: var(--green);
+  border: 1px solid rgba(0,229,160,0.15);
+  letter-spacing: 0.03em;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-left {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text3);
+  letter-spacing: 0.04em;
+}
+
+.footer-right {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text3);
+  letter-spacing: 0.04em;
+}
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .skills-layout { grid-template-columns: 1fr 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .contact-wrap { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+
+@media (max-width: 560px) {
+  .skills-layout { grid-template-columns: 1fr; }
+  .wrap { padding: 0 1.25rem; }
+  nav { padding: 0 1.25rem; }
+  .hero-h1 { font-size: 36px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><span>~/</span>ayush.nautiyal</div>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">hire me →</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-status">
+          <span class="status-dot"></span>
+          Open to SOC Analyst &amp; Cybersecurity Internships
+        </div>
+        <h1 class="hero-h1">
+          Defending<br>
+          networks.<br>
+          <span class="accent-word">Detecting</span><br>
+          threats.
+        </h1>
+        <p class="hero-tagline">Cybersecurity MSc student at NCI Dublin with hands-on SIEM deployment, packet analysis, and firewall simulation experience. Built to contribute in a SOC from day one.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn btn-primary">Get in touch ↗</a>
+          <a href="#projects" class="btn btn-ghost">View projects</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="t-dot t-red"></span>
+            <span class="t-dot t-yellow"></span>
+            <span class="t-dot t-green"></span>
+            <span class="t-title">soc-analyst — bash — 80x24</span>
+          </div>
+          <div class="terminal-body">
+            <span class="t-line"><span class="t-prompt">ayush@soc</span><span class="t-comment">:~$</span> <span class="t-cmd">whoami</span></span>
+            <span class="t-line"><span class="t-green-t">Ayush Nautiyal</span> — Aspiring SOC Analyst</span>
+            <span class="t-line">&nbsp;</span>
+            <span class="t-line"><span class="t-prompt">ayush@soc</span><span class="t-comment">:~$</span> <span class="t-cmd">cat education.txt</span></span>
+            <span class="t-line"><span class="t-amber-t">MSc Cybersecurity</span> · NCI Ireland (current)</span>
+            <span class="t-line"><span class="t-out">BCA · Computer Applications (graduate)</span></span>
+            <span class="t-line">&nbsp;</span>
+            <span class="t-line"><span class="t-prompt">ayush@soc</span><span class="t-comment">:~$</span> <span class="t-cmd">nmap --top-skills</span></span>
+            <span class="t-line"><span class="t-green-t">OPEN</span>  <span class="t-out">Wazuh SIEM · Alert Engineering</span></span>
+            <span class="t-line"><span class="t-green-t">OPEN</span>  <span class="t-out">Wireshark · Packet Analysis</span></span>
+            <span class="t-line"><span class="t-green-t">OPEN</span>  <span class="t-out">Palo Alto · Firewall Policy</span></span>
+            <span class="t-line"><span class="t-green-t">OPEN</span>  <span class="t-out">OpenVAS · Vuln Assessment</span></span>
+            <span class="t-line">&nbsp;</span>
+            <span class="t-line"><span class="t-prompt">ayush@soc</span><span class="t-comment">:~$</span> <span class="t-cursor"></span></span>
+          </div>
+          <div class="hero-tags">
+            <span class="hero-tag">SIEM</span>
+            <span class="hero-tag">IDS/IPS</span>
+            <span class="hero-tag">Threat Detection</span>
+            <span class="hero-tag">Incident Response</span>
+            <span class="hero-tag">Network Security</span>
+            <span class="hero-tag">Python</span>
+            <span class="hero-tag">CCNA</span>
+            <span class="hero-tag">Kali Linux</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-eyebrow">01 · about</div>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>I'm <strong>Ayush Nautiyal</strong>, a cybersecurity professional-in-training currently pursuing an MSc in Cybersecurity at the National College of Ireland, Dublin. My BCA gave me solid programming and networking fundamentals — my MSc is translating that into applied security skills.</p>
+        <p>I gravitate toward <strong>threat detection and incident response</strong>. I've built a SIEM lab from scratch, analysed real packet captures, and simulated enterprise firewall policies — not as academic exercises, but as deliberate preparation for a SOC role.</p>
+        <p>With 3 internships under my belt, I've improved network reliability by <strong>20%</strong> and operational efficiency by <strong>30%</strong> — I understand what it means to deliver results in a team environment.</p>
+        <div class="stat-chips">
+          <div class="stat-chip">
+            <span class="stat-chip-num">3</span>
+            <span class="stat-chip-lbl">Internships</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-chip-num">23+</span>
+            <span class="stat-chip-lbl">Labs Built</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-chip-num">30%</span>
+            <span class="stat-chip-lbl">Efficiency↑</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-chip-num">20%</span>
+            <span class="stat-chip-lbl">Reliability↑</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-cards">
+        <div class="about-card">
+          <div class="about-card-label">Currently seeking</div>
+          <h3>SOC Analyst &amp; Cybersecurity Intern roles</h3>
+          <p>Actively targeting internships and graduate positions across Ireland and Europe — available for hybrid and on-site roles.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-label">Education</div>
+          <h3>MSc Cybersecurity · NCI Dublin</h3>
+          <p>Specialising in threat analysis, SIEM operations, and network defence. Built on a BCA foundation with deep programming and systems knowledge.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-label">Approach</div>
+          <h3>Lab-first, results-driven</h3>
+          <p>Every tool on my CV has been used in a hands-on environment. I don't just know the concepts — I've configured, broken, and fixed real systems.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-eyebrow">02 · skills</div>
+    <h2 class="section-title">Technical proficiencies</h2>
+    <div class="skills-layout reveal">
+      <div class="skill-card blue">
+        <span class="skill-card-icon">🛡</span>
+        <div class="skill-card-title">SOC &amp; Monitoring</div>
+        <div class="skill-items">
+          <span class="skill-pill">Wazuh SIEM</span>
+          <span class="skill-pill">Log Analysis</span>
+          <span class="skill-pill">Alert Engineering</span>
+          <span class="skill-pill">Incident Triage</span>
+          <span class="skill-pill">Log Correlation</span>
+        </div>
+      </div>
+      <div class="skill-card blue">
+        <span class="skill-card-icon">🔍</span>
+        <div class="skill-card-title">Network Security</div>
+        <div class="skill-items">
+          <span class="skill-pill">Wireshark</span>
+          <span class="skill-pill">Packet Analysis</span>
+          <span class="skill-pill">Nmap</span>
+          <span class="skill-pill">Palo Alto</span>
+          <span class="skill-pill">CCNA-level</span>
+          <span class="skill-pill">CCNP-level</span>
+        </div>
+      </div>
+      <div class="skill-card green">
+        <span class="skill-card-icon">⚠</span>
+        <div class="skill-card-title">Vulnerability &amp; Threat</div>
+        <div class="skill-items">
+          <span class="skill-pill">OpenVAS</span>
+          <span class="skill-pill">Kali Linux</span>
+          <span class="skill-pill">CVE Analysis</span>
+          <span class="skill-pill">CVSS Scoring</span>
+          <span class="skill-pill">Attack Surface</span>
+        </div>
+      </div>
+      <div class="skill-card green">
+        <span class="skill-card-icon">🔐</span>
+        <div class="skill-card-title">Identity &amp; Access</div>
+        <div class="skill-items">
+          <span class="skill-pill">IAM Fundamentals</span>
+          <span class="skill-pill">Access Control</span>
+          <span class="skill-pill">Privilege Mgmt</span>
+        </div>
+      </div>
+      <div class="skill-card amber">
+        <span class="skill-card-icon">⌨</span>
+        <div class="skill-card-title">Programming</div>
+        <div class="skill-items">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">C</span>
+          <span class="skill-pill">C++</span>
+          <span class="skill-pill">Scripting</span>
+        </div>
+      </div>
+      <div class="skill-card amber">
+        <span class="skill-card-icon">🖥</span>
+        <div class="skill-card-title">Platforms &amp; Tools</div>
+        <div class="skill-items">
+          <span class="skill-pill">Kali Linux</span>
+          <span class="skill-pill">Ubuntu</span>
+          <span class="skill-pill">VirtualBox</span>
+          <span class="skill-pill">Cisco PT</span>
+          <span class="skill-pill">GNS3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="section-eyebrow">03 · projects</div>
+    <h2 class="section-title">Hands-on labs &amp; builds</h2>
+    <div class="projects-grid reveal">
+
+      <div class="proj-card">
+        <div class="proj-num">01</div>
+        <div class="proj-title">SIEM Home Lab — <span>Wazuh</span></div>
+        <p class="proj-desc">Deployed a full Wazuh SIEM stack in a virtualised multi-endpoint environment. Authored custom detection rules to surface privilege escalation and brute-force patterns, then tuned alert thresholds to reduce false-positive rate. Simulates a lightweight SOC monitoring environment end-to-end — from log ingestion to alert triage.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Wazuh</span>
+          <span class="proj-tag">SIEM</span>
+          <span class="proj-tag">Log Analysis</span>
+          <span class="proj-tag">Alert Engineering</span>
+          <span class="proj-tag">VirtualBox</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">02</div>
+        <div class="proj-title">Packet Analysis — <span>Wireshark</span></div>
+        <p class="proj-desc">Captured and dissected live network traffic to identify anomalous patterns, protocol misuse, and reconnaissance activity. Documented findings in structured incident reports mapping traffic artefacts to MITRE ATT&amp;CK techniques. Built the ability to spot indicators of compromise at the packet level.</p>
+        <div class="proj-tags">
+          <span class="proj-tag green">Wireshark</span>
+          <span class="proj-tag green">PCAP Analysis</span>
+          <span class="proj-tag green">MITRE ATT&CK</span>
+          <span class="proj-tag green">Threat Hunting</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">03</div>
+        <div class="proj-title">Vulnerability Scanning — <span>Nmap &amp; OpenVAS</span></div>
+        <p class="proj-desc">Conducted structured vulnerability assessments against a lab network using Nmap for host discovery and service enumeration, and OpenVAS for authenticated scanning. Prioritised findings by CVSS score and drafted a remediation report with risk-ranked recommendations aligned to industry standards.</p>
+        <div class="proj-tags">
+          <span class="proj-tag amber">Nmap</span>
+          <span class="proj-tag amber">OpenVAS</span>
+          <span class="proj-tag amber">CVSS</span>
+          <span class="proj-tag amber">Vulnerability Assessment</span>
+          <span class="proj-tag amber">Kali Linux</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">04</div>
+        <div class="proj-title">Firewall Simulation — <span>Palo Alto</span></div>
+        <p class="proj-desc">Configured and tested enterprise-grade firewall rules in a Palo Alto simulation environment, enforcing zone-based segmentation, application-layer inspection, and URL filtering. Validated rule effectiveness by running controlled traffic against policy and iterating on misconfigurations — mirroring real-world firewall ops workflow.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Palo Alto</span>
+          <span class="proj-tag">Firewall Rules</span>
+          <span class="proj-tag">Network Segmentation</span>
+          <span class="proj-tag">App-ID</span>
+          <span class="proj-tag">Zone Policy</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-eyebrow">04 · experience</div>
+    <h2 class="section-title">Professional history</h2>
+    <div class="exp-timeline reveal">
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div class="exp-role">Network &amp; Security Intern</div>
+          <span class="exp-badge">2023</span>
+        </div>
+        <div class="exp-company">Networking &amp; Infrastructure · Internship</div>
+        <ul class="exp-bullets">
+          <li>Designed and deployed <strong>15+ CCNA-level</strong> and <strong>8+ CCNP-level</strong> labs covering OSPF, BGP, EIGRP, and MPLS topologies — building deep protocol-level troubleshooting instinct transferable directly to SOC network analysis.</li>
+          <li>Ran end-to-end <strong>Palo Alto firewall simulations</strong> including security zone configuration, App-ID policies, and NAT rules, contributing directly to team documentation and runbooks.</li>
+          <li>Streamlined lab setup and teardown procedures through templated runbooks and automation scripts, reducing configuration time by <strong>30%</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div class="exp-role">Lab Intern — Network Operations</div>
+          <span class="exp-badge">2022</span>
+        </div>
+        <div class="exp-company">Network Operations · Internship</div>
+        <ul class="exp-bullets">
+          <li>Diagnosed and resolved persistent <strong>routing misconfigurations</strong> in a production-like lab environment, increasing network reliability and uptime by <strong>20%</strong>.</li>
+          <li>Applied systematic <strong>OSI-layer fault isolation methodology</strong>, developing the structured diagnostic approach central to effective SOC incident response.</li>
+          <li>Documented each incident with root-cause analysis and corrective action notes, building a reusable knowledge base and practising formal incident reporting standards.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div class="exp-role">Web Developer Intern</div>
+          <span class="exp-badge">2021</span>
+        </div>
+        <div class="exp-company">Software Development · Internship</div>
+        <ul class="exp-bullets">
+          <li>Delivered responsive, cross-browser web interfaces using HTML, CSS, and JavaScript, meeting design specifications and accessibility standards on schedule.</li>
+          <li>Collaborated in an agile team environment with version control and code review workflows — foundations that now inform clean, maintainable Python scripting for security automation.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-eyebrow">05 · contact</div>
+    <h2 class="section-title">Let's connect</h2>
+    <div class="contact-wrap reveal">
+      <div class="contact-intro">
+        <div class="contact-availability">
+          <div class="availability-header">
+            <span class="availability-dot"></span>
+            <span>Available for opportunities</span>
+          </div>
+          <p class="availability-text">I'm actively seeking SOC Analyst and cybersecurity internship opportunities across Ireland and Europe. If you're a recruiter, hiring manager, or fellow security professional — I'd be glad to hear from you.</p>
+          <div class="availability-chips">
+            <span class="availability-chip">SOC Analyst</span>
+            <span class="availability-chip">Cybersecurity Intern</span>
+            <span class="availability-chip">Ireland &amp; EU</span>
+            <span class="availability-chip">Hybrid / On-site</span>
+          </div>
+        </div>
+        <p style="font-size:13.5px;color:var(--text2)">I respond to all professional enquiries within 24 hours. Whether it's a short-term internship or a full graduate role, I'm open to the conversation.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:ayush.nautiyal@email.com" class="contact-link">
+          <div class="contact-link-icon">@</div>
+          <div>
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-val">ayush.nautiyal@email.com</div>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/ayushnautiyal" class="contact-link" target="_blank" rel="noopener">
+          <div class="contact-link-icon">in</div>
+          <div>
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-val">linkedin.com/in/ayushnautiyal</div>
+          </div>
+        </a>
+        <a href="https://github.com/ayushnautiyal" class="contact-link" target="_blank" rel="noopener">
+          <div class="contact-link-icon">&lt;/&gt;</div>
+          <div>
+            <div class="contact-link-label">GitHub</div>
+            <div class="contact-link-val">github.com/ayushnautiyal</div>
+          </div>
+        </a>
+        <a href="#" class="contact-link">
+          <div class="contact-link-icon">⌖</div>
+          <div>
+            <div class="contact-link-label">Location</div>
+            <div class="contact-link-val">Dublin, Ireland · Open to EU</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">© 2025 Ayush Nautiyal · MSc Cybersecurity, NCI Dublin</div>
+  <div class="footer-right">Open to SOC &amp; Security roles · Ireland &amp; Europe</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
